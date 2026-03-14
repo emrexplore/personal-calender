@@ -106,6 +106,7 @@ struct MemoryCard: View {
     @EnvironmentObject var timelineManager: TimelineManager
     
     @StateObject private var audioPlayer = AudioPlayer()
+    @State private var selectedImageForFullScreen: UIImage?
     
     var onEdit: () -> Void
     var onDelete: () -> Void
@@ -169,6 +170,9 @@ struct MemoryCard: View {
                                     .scaledToFill()
                                     .frame(width: 100, height: 100)
                                     .clipShape(RoundedRectangle(cornerRadius: 8))
+                                    .onTapGesture {
+                                        selectedImageForFullScreen = uiImage
+                                    }
                             }
                         }
                     }
@@ -220,6 +224,12 @@ struct MemoryCard: View {
         .background(Color(.systemBackground))
         .cornerRadius(12)
         .shadow(color: Color.black.opacity(0.05), radius: 3, x: 0, y: 2)
+        .fullScreenCover(item: Binding(
+            get: { selectedImageForFullScreen != nil ? IdentifiableImage(image: selectedImageForFullScreen!) : nil },
+            set: { selectedImageForFullScreen = $0?.image }
+        )) { identifiableImage in
+            FullScreenImageView(image: identifiableImage.image)
+        }
     }
 }
 
@@ -529,4 +539,74 @@ struct SelectedMedia: Identifiable {
     let id = UUID()
     let data: Data
     let isVideo: Bool
+}
+
+struct IdentifiableImage: Identifiable {
+    let id = UUID()
+    let image: UIImage
+}
+
+struct FullScreenImageView: View {
+    let image: UIImage
+    @Environment(\.dismiss) var dismiss
+    @State private var scale: CGFloat = 1.0
+    @State private var offset: CGSize = .zero
+    
+    var body: some View {
+        ZStack {
+            Color.black.edgesIgnoringSafeArea(.all)
+            
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFit()
+                .scaleEffect(scale)
+                .offset(offset)
+                .gesture(SimultaneousGesture(
+                    MagnificationGesture()
+                        .onChanged { value in
+                            scale = value.magnitude
+                        }
+                        .onEnded { _ in
+                            withAnimation(.spring()) {
+                                if scale < 1 {
+                                    scale = 1
+                                    offset = .zero
+                                }
+                            }
+                        },
+                    DragGesture()
+                        .onChanged { value in
+                            if scale > 1 {
+                                offset = value.translation
+                            }
+                        }
+                        .onEnded { _ in
+                            withAnimation(.spring()) {
+                                if scale <= 1 {
+                                    offset = .zero
+                                }
+                            }
+                        }
+                ))
+            
+            VStack {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .font(.system(size: 32))
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.black.opacity(0.3))
+                            .clipShape(Circle())
+                    }
+                    .padding(.trailing, 20)
+                    .padding(.top, 40)
+                }
+                Spacer()
+            }
+        }
+    }
 }

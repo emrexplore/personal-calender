@@ -12,8 +12,7 @@ class AudioPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate {
     func playAudio(from url: URL) {
         let session = AVAudioSession.sharedInstance()
         do {
-            // overrideOutputAudioPort set in order to play sound via speaker instead of earpiece
-            try session.setCategory(.playback, mode: .default, options: .defaultToSpeaker)
+            try session.setCategory(.playback, mode: .default)
             try session.setActive(true)
             
             audioPlayer = try AVAudioPlayer(contentsOf: url)
