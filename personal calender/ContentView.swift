@@ -6,81 +6,47 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
+    @State private var childProfile: ChildProfile? = nil
+    @State private var isProfileLoaded: Bool = false
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
+        ZStack {
+            Color.white.ignoresSafeArea()
+            
+            if isProfileLoaded {
+                if childProfile == nil {
+                    OnboardingView(childProfile: $childProfile)
+                        .onAppear { print("DEBUG: OnboardingView gösteriliyor.") }
+                } else {
+                    MainTabView(childProfile: $childProfile)
+                        .onAppear { print("DEBUG: MainTabView gösteriliyor.") }
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            } else {
+                Text("Special for Burcu and Çağrı Yüngeviş")
+                    .font(.title)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                    .onAppear { print("DEBUG: Splash ekranı gösteriliyor.") }
             }
         }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        .onAppear {
+            print("DEBUG: ContentView onAppear tetiklendi")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                if let savedProfile = StorageManager.shared.loadProfile() {
+                    print("DEBUG: Profil bulundu: \(savedProfile.name)")
+                    childProfile = savedProfile
+                } else {
+                    print("DEBUG: Profil bulunamadı, Onboarding'e geçilecek.")
+                }
+                isProfileLoaded = true
             }
         }
     }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 #Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    ContentView()
 }
+

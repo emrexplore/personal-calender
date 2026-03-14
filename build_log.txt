@@ -1,0 +1,74 @@
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -workspace "personal calender.xcodeproj/project.xcworkspace" -scheme "personal calender" -destination "platform=iOS Simulator,name=Antigravity iPhone 16" build
+
+2026-02-25 05:16:41.015 xcodebuild[21570:394456] [MT] IDERunDestination: Supported platforms for the buildables in the current scheme is empty.
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (1 target)
+    Target 'personal calender' in project 'personal calender' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --print-asset-tag-combinations --output-format xml1 /Users/emrexplore/Desktop/barisyungevis/personal calender/personal calender/Assets.xcassets
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/usr/bin/actool --version --output-format xml1
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: 36a5294b68cb256a885eb0d22d433066
+Build description path: /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/XCBuildData/36a5294b68cb256a885eb0d22d433066.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk /Users/emrexplore/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.2-23C53-7d00a8b37fbd7999ea79df8ebc024bf0.sdkstatcache
+    cd /Users/emrexplore/Desktop/barisyungevis/personal\ calender/personal\ calender.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -o /Users/emrexplore/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.2-23C53-7d00a8b37fbd7999ea79df8ebc024bf0.sdkstatcache
+
+SwiftDriver personal\ calender normal x86_64 com.apple.xcode.tools.swift.compiler (in target 'personal calender' from project 'personal calender')
+    cd /Users/emrexplore/Desktop/barisyungevis/personal\ calender
+    builtin-SwiftDriver -- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -module-name personal_calender -Onone -enforce-exclusivity\=checked @/Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/Objects-normal/x86_64/personal\ calender.SwiftFileList -DDEBUG -default-isolation\=MainActor -enable-bare-slash-regex -enable-upcoming-feature DisableOutwardActorInference -enable-upcoming-feature InferSendableFromCaptures -enable-upcoming-feature GlobalActorIsolatedTypesUsability -enable-upcoming-feature MemberImportVisibility -enable-upcoming-feature InferIsolatedConformances -enable-upcoming-feature NonisolatedNonsendingByDefault -enable-experimental-feature DebugDescriptionMacro -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.2.sdk -target x86_64-apple-ios26.2-simulator -g -module-cache-path /Users/emrexplore/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -profile-coverage-mapping -profile-generate -enable-testing -index-store-path /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Index.noindex/DataStore -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -swift-version 5 -I /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Products/Debug-iphonesimulator -F /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Products/Debug-iphonesimulator -emit-localized-strings -emit-localized-strings-path /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/Objects-normal/x86_64 -c -j4 -enable-batch-mode -incremental -Xcc -ivfsstatcache -Xcc /Users/emrexplore/Library/Developer/Xcode/DerivedData/SDKStatCaches.noindex/iphonesimulator26.2-23C53-7d00a8b37fbd7999ea79df8ebc024bf0.sdkstatcache -output-file-map /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/Objects-normal/x86_64/personal\ calender-OutputFileMap.json -use-frontend-parseable-output -save-temps -no-color-diagnostics -explicit-module-build -module-cache-path /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/SwiftExplicitPrecompiledModules -clang-scanner-module-cache-path /Users/emrexplore/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -sdk-module-cache-path /Users/emrexplore/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/Objects-normal/x86_64/personal_calender.swiftmodule -validate-clang-modules-once -clang-build-session-file /Users/emrexplore/Library/Developer/Xcode/DerivedData/ModuleCache.noindex/Session.modulevalidation -Xcc -I/Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/swift-overrides.hmap -emit-const-values -Xfrontend -const-gather-protocols-file -Xfrontend /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/Objects-normal/x86_64/personal\ calender_const_extract_protocols.json -Xcc -iquote -Xcc /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/personal\ calender-generated-files.hmap -Xcc -I/Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/personal\ calender-own-target-headers.hmap -Xcc -I/Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/personal\ calender-all-target-headers.hmap -Xcc -iquote -Xcc /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/personal\ calender-project-headers.hmap -Xcc -I/Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Products/Debug-iphonesimulator/include -Xcc -I/Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/DerivedSources-normal/x86_64 -Xcc -I/Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/DerivedSources/x86_64 -Xcc -I/Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/DerivedSources -Xcc -DDEBUG\=1 -emit-objc-header -emit-objc-header-path /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/Objects-normal/x86_64/personal_calender-Swift.h -working-directory /Users/emrexplore/Desktop/barisyungevis/personal\ calender -experimental-emit-module-separately -disable-cmo
+/Users/emrexplore/Desktop/barisyungevis/personal calender/personal calender/Views/HomeTimelineView.swift:55:18: error: consecutive statements on a line must be separated by ';'
+                } else {
+                 ^
+                 ;
+/Users/emrexplore/Desktop/barisyungevis/personal calender/personal calender/Views/HomeTimelineView.swift:55:19: error: expected expression
+                } else {
+                  ^
+/Users/emrexplore/Desktop/barisyungevis/personal calender/personal calender/Views/HomeTimelineView.swift:63:1: error: extraneous '}' at top level
+}
+^
+/Users/emrexplore/Desktop/barisyungevis/personal calender/personal calender/Views/HomeTimelineView.swift:55:18: error: Consecutive statements on a line must be separated by ';'
+                } else {
+                 ^
+                 ; (in target 'personal calender' from project 'personal calender')
+/Users/emrexplore/Desktop/barisyungevis/personal calender/personal calender/Views/HomeTimelineView.swift:55:19: error: Expected expression
+                } else {
+                  ^ (in target 'personal calender' from project 'personal calender')
+/Users/emrexplore/Desktop/barisyungevis/personal calender/personal calender/Views/HomeTimelineView.swift:63:1: error: Extraneous '}' at top level
+}
+^ (in target 'personal calender' from project 'personal calender')
+
+ProcessInfoPlistFile /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Products/Debug-iphonesimulator/personal\ calender.app/Info.plist /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/empty-personal\ calender.plist (in target 'personal calender' from project 'personal calender')
+    cd /Users/emrexplore/Desktop/barisyungevis/personal\ calender
+    builtin-infoPlistUtility /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/empty-personal\ calender.plist -producttype com.apple.product-type.application -genpkginfo /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Products/Debug-iphonesimulator/personal\ calender.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Intermediates.noindex/personal\ calender.build/Debug-iphonesimulator/personal\ calender.build/assetcatalog_generated_info.plist -o /Users/emrexplore/Library/Developer/Xcode/DerivedData/personal_calender-baquelpomtchnmarfrsdnmkonhdr/Build/Products/Debug-iphonesimulator/personal\ calender.app/Info.plist
+
+** BUILD FAILED **
+
+
+The following build commands failed:
+	SwiftDriver personal\ calender normal x86_64 com.apple.xcode.tools.swift.compiler (in target 'personal calender' from project 'personal calender')
+	Building workspace personal calender with scheme personal calender
+(2 failures)
