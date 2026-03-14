@@ -42,7 +42,7 @@ struct MainTabView: View {
                 }
             }
         }
-        .onChange(of: childProfile?.id) { newId in
+        .onChange(of: childProfile?.id) { _, newId in
             timelineManager.childID = newId
             timelineManager.load()
             if timelineManager.periods.isEmpty {

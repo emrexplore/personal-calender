@@ -260,7 +260,7 @@ struct AddMemorySheet: View {
                             Text("Yeni Medya (Foto/Video) Ekle")
                         }
                     }
-                    .onChange(of: selectedItems) {
+                    .onChange(of: selectedItems) { _, _ in
                         Task {
                             selectedMediaData.removeAll()
                             for item in selectedItems {

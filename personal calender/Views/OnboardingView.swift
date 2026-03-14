@@ -66,7 +66,7 @@ struct OnboardingView: View {
                             }
                             .padding(.top, 40)
                         }
-                        .onChange(of: selectedItem) {
+                        .onChange(of: selectedItem) { _, _ in
                             Task {
                                 if let data = try? await selectedItem?.loadTransferable(type: Data.self) {
                                     withAnimation(.spring()) {

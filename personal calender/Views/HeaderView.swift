@@ -45,7 +45,7 @@ struct HeaderView: View {
                     }
                 }
             }
-            .onChange(of: selectedItem) {
+            .onChange(of: selectedItem) { _, _ in
                 Task {
                     if let data = try? await selectedItem?.loadTransferable(type: Data.self) {
                         child.profileImageData = data

@@ -88,7 +88,6 @@ class PDFGenerator {
         ]
         
         let attributedText = NSAttributedString(string: text, attributes: textAttributes)
-        let textRect = CGRect(x: margin, y: y, width: pageWidth - (margin * 2), height: 1000)
         let textBoundingRect = attributedText.boundingRect(with: CGSize(width: pageWidth - (margin * 2), height: 1000), options: .usesLineFragmentOrigin, context: nil)
         
         attributedText.draw(in: CGRect(origin: CGPoint(x: margin, y: y), size: textBoundingRect.size))

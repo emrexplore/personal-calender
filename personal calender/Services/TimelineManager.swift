@@ -134,7 +134,6 @@ class TimelineManager: ObservableObject {
             var pYear = 1
             
             if period.type == .week {
-                let exactBabyWeek = period.number
                 let m = calendar.dateComponents([.month], from: birthDate, to: period.startDate).month ?? 0
                 pMonth = min(m + 1, 12)
                 pYear = 1
