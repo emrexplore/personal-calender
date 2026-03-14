@@ -178,6 +178,10 @@ struct OnboardingView: View {
                     .offset(y: isAppearing ? 0 : 20)
                 }
             }
+            .onTapGesture {
+                hideKeyboard()
+            }
+            .scrollDismissesKeyboard(.interactively)
         }
         .onAppear {
             withAnimation(.easeOut(duration: 0.6)) {

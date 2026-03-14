@@ -57,6 +57,10 @@ struct AddGrowthDataView: View {
                         .frame(height: 100)
                 }
             }
+            .onTapGesture {
+                hideKeyboard()
+            }
+            .scrollDismissesKeyboard(.interactively)
             .navigationTitle(editingData == nil ? "Yeni Ölçüm Ekle" : "Ölçümü Düzenle")
             .navigationBarItems(
                 leading: Button("İptal") {
