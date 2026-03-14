@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MilestonesView: View {
     @EnvironmentObject var timelineManager: TimelineManager
+    @State private var selectedMilestone: MemoryEntry?
     
     var body: some View {
         NavigationView {
@@ -37,6 +38,9 @@ struct MilestonesView: View {
                         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
                             ForEach(milestones) { milestone in
                                 MilestoneCard(entry: milestone)
+                                    .onTapGesture {
+                                        selectedMilestone = milestone
+                                    }
                             }
                         }
                         .padding()
@@ -46,6 +50,20 @@ struct MilestonesView: View {
             }
             .navigationTitle("✨ İlklerim")
             .navigationBarTitleDisplayMode(.large)
+            .sheet(item: $selectedMilestone) { milestone in
+                NavigationView {
+                    ScrollView {
+                        MemoryCard(entry: milestone, isReadOnly: true)
+                            .padding()
+                    }
+                    .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
+                    .navigationTitle("Kilometre Taşı Detayı")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarItems(trailing: Button("Kapat") {
+                        selectedMilestone = nil
+                    })
+                }
+            }
         }
     }
 }

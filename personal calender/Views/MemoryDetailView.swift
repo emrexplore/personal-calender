@@ -108,8 +108,9 @@ struct MemoryCard: View {
     @StateObject private var audioPlayer = AudioPlayer()
     @State private var selectedImageForFullScreen: UIImage?
     
-    var onEdit: () -> Void
-    var onDelete: () -> Void
+    var isReadOnly: Bool = false
+    var onEdit: () -> Void = {}
+    var onDelete: () -> Void = {}
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -127,17 +128,19 @@ struct MemoryCard: View {
                 
                 Spacer()
                 
-                Menu {
-                    Button(action: onEdit) {
-                        Label("Düzenle", systemImage: "pencil")
+                if !isReadOnly {
+                    Menu {
+                        Button(action: onEdit) {
+                            Label("Düzenle", systemImage: "pencil")
+                        }
+                        Button(role: .destructive, action: onDelete) {
+                            Label("Sil", systemImage: "trash")
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis")
+                            .foregroundColor(.gray)
+                            .padding(8)
                     }
-                    Button(role: .destructive, action: onDelete) {
-                        Label("Sil", systemImage: "trash")
-                    }
-                } label: {
-                    Image(systemName: "ellipsis")
-                        .foregroundColor(.gray)
-                        .padding(8)
                 }
             }
             
